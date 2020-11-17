@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-# author:           inspurer(月小水长)
-# pc_type           lenovo
-# create_time:      2019/12/2 12:25
-# file_name:        myDict.py
-# github            https://github.com/inspurer
-# qq邮箱            2391527690@qq.com
-# 微信公众号         月小水长(ID: inspurer)
+# author:           oneplum7
+# create_time:      2020/10
+# file_name:        rightview.py
+# github           https://github.com/oneplum7?tab=repositories
+# qq邮箱            2104878583@qq.com
+
 
 class AllowKeyRepeatDict():
     '''

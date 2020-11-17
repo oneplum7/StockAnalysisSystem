@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
-# author:           inspurer(月小水长)
-# pc_type           lenovo
-# create_time:      2019/12/1 23:07
-# file_name:        history_stock_quotes_scrapy.py
-# github            https://github.com/inspurer
-# qq邮箱            2391527690@qq.com
-# 微信公众号         月小水长(ID: inspurer)
+# author:           oneplum7
+# create_time:      2020/10
+# file_name:        rightview.py
+# github           https://github.com/oneplum7?tab=repositories
+# qq邮箱            2104878583@qq.com
 
 import requests
 
 from lxml import etree
 
-from stock_analysis.utils import myDict
+import myDict
 
 import pymongo
 
@@ -25,7 +23,7 @@ stock_basis = myDict.AllowKeyRepeatDict()
 for basic in basis:
     stock_basis.add(key=basic['name'],value=basic['code'])
 
-stock_name = '中信证券'
+stock_name = '药明康德'
 stock_code = stock_basis.query(key=stock_name)[0]
 table_quotes = db[stock_name+'_'+stock_code]
 
@@ -37,7 +35,7 @@ headers = {
 
 base_url = 'http://quotes.money.163.com/trade/lsjysj_{code}.html'
 # 2019 年
-year = 2019
+year = 2020
 season = 1
 # 四季度
 for season in range(1,5):
@@ -48,6 +46,7 @@ for season in range(1,5):
     response = requests.get(url=base_url.format(code=stock_code),headers=headers,params=params)
 
     html = etree.HTML(response.text)
+    print(len(html.xpath('//table[@class="table_bg001 border_box limit_sale"]/tr')))
     for tr in html.xpath('//table[@class="table_bg001 border_box limit_sale"]/tr'):
         tds = tr.xpath('.//td/text()')
         date = tds[0].replace('-','')

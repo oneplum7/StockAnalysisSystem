@@ -1,0 +1,432 @@
+{
+    "backgroundColor": "#19232d",
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "tooltip": {
+        "show": true,
+        "trigger": "axis",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "formatter": function(params) {
+            if (params.length > 0) {
+                PosSelect(params)
+            }
+        },
+    },
+    "xAxis": [{
+            "show": false,
+            "scale": true,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": data.times,
+        },
+        {
+            "show": false,
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 1,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": data.times,
+        },
+        {
+            "show": true,
+            "scale": false,
+            "gridIndex": 2,
+            "splitNumber": 5,
+            "offset": 0,
+            "minInterval": 0,
+            "inverse": false,
+            "nameLocation": "end",
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "data": data.times,
+        },
+        {
+            "gridIndex": 3,
+            "show": false,
+            "type": "value",
+
+        }
+    ],
+    "yAxis": [{
+            "show": true,
+            "position": "right",
+            "scale": true,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 0,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 5,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            },
+            "splitArea": {
+                "show": true,
+                "areaStyle": {
+                    "opacity": 1
+                }
+            }
+        },
+        {
+            "show": true,
+            "position": "right",
+            "scale": false,
+            "nameLocation": "end",
+            "nameGap": 15,
+            "gridIndex": 1,
+            "inverse": false,
+            "offset": 0,
+            "splitNumber": 2,
+            "minInterval": 0,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        },
+        {
+            "show": true,
+            "position": "right",
+            "scale": false,
+            "nameLocation": "end",
+            "minInterval": 0,
+            "gridIndex": 2,
+            "splitNumber": 5,
+            "splitLine": {
+                "show": false,
+                "lineStyle": {
+                    "width": 1,
+                    "opacity": 1,
+                    "curveness": 0,
+                    "type": "solid"
+                }
+            }
+        },
+        {
+            "gridIndex": 3,
+            "show": true,
+            "type": "category",
+            "axisLabel": {
+                "showMinLabel": false,
+                "formatter": function(val) {
+                    return '￥' + val
+                }
+            },
+        }
+    ],
+    "title": {
+        "text": KNAME
+    },
+    "dataZoom": [{
+            "show": false,
+            "type": "inside",
+            "start": Zstart,
+            "end": Zend,
+            "xAxisIndex": [
+                0,
+                0
+            ],
+        },
+        {
+            "show": false,
+            "type": "slider",
+            "start": Zstart,
+            "end": Zend,
+            "xAxisIndex": [
+                0,
+                1
+            ],
+        },
+        {
+            "show": false,
+            "type": "slider",
+            "start": Zstart,
+            "end": Zend,
+            "xAxisIndex": [
+                0,
+                2
+            ],
+        },
+        {
+            "show": false,
+        }
+    ],
+    "axisPointer": {
+        "show": true,
+        "type": "line",
+        "link": [{
+            "xAxisIndex": "all"
+        }]
+    },
+    "toolbox": {
+        "feature": {
+            "restore": {},
+            "dataZoom": {},
+            // "magicType": {
+            //     "type": ['line', 'bar', 'stack', 'tiled']
+            // }
+        },
+    },
+    "series": [{
+            "type": "candlestick",
+            "name": "K线图",
+            "xAxisIndex": 0,
+            "yAxisIndex": 0,
+            "data": data.datas,
+            "markPoint": {
+                "label": {
+                    "show": true,
+                    "position": "inside",
+
+                    "margin": 8
+                },
+                "data": [{
+                        "name": "最高价",
+                        "type": "max",
+                        "valueDim": 'highest',
+                        "itemStyle": {
+                            "color": color2,
+                        }
+                    },
+                    {
+                        "name": "最底价",
+                        "type": "min",
+                        "valueDim": 'lowest',
+                        "itemStyle": {
+                            "color": "rgb(41,60,85)",
+                        }
+                    }
+                ]
+            },
+            "markLine": {
+                "symbol": "",
+                "data": [{
+                    "yAxis": data.datas[data.datas.length - 1][1],
+                    "label": {
+                        "position": "end",
+                        "padding": 0
+                    },
+                    "lineStyle": {
+                        "type": "dotted",
+                        "color": "#ccc"
+                    },
+                }, ]
+            },
+            "itemStyle": {
+                "color": color1,
+                "color0": color2,
+                "borderColor": color1,
+                "borderColor0": color2
+            }
+        },
+        {
+            "type": "line",
+            "name": ifma()[0],
+            "data": MA1[0],
+        },
+        {
+            "type": "line",
+            "name": ifma()[1],
+            "data": MA2[0],
+        },
+        {
+            "type": "line",
+            "name": ifma()[2],
+            "data": MA3[0],
+        },
+        {
+            "type": "line",
+            "name": ifma()[3],
+            "data": MA4[0],
+        },
+        {
+            "type": "line",
+            "name": ifma()[4],
+            "data": MA5[0],
+        },
+        {
+            "type": "line",
+            "name": ifma()[5],
+            "data": MA6[0],
+        },
+        {
+            "type": "bar",
+            "name": "成交量",
+            "xAxisIndex": 1,
+            "yAxisIndex": 1,
+            "data": data.vols,
+            "barCategoryGap": "20%",
+            "itemStyle": {
+                "normal": {
+                    "color": function(params) {
+                        var colorList;
+                        if (data.datas[params.dataIndex][1] > data.datas[params.dataIndex][0]) {
+                            colorList = color1;
+                        } else {
+                            colorList = color2;
+                        }
+                        return colorList;
+                    },
+                }
+            }
+        },
+        {
+            "type": "bar",
+            "name": "MACD",
+            "xAxisIndex": 2,
+            "yAxisIndex": 2,
+            "data": macd.macd,
+            "itemStyle": {
+                "normal": {
+                    "color": function(params) {
+                        var colorList;
+                        if (params.data >= 0) {
+                            colorList = color1;
+                        } else {
+                            colorList = color2;
+                        }
+                        return colorList;
+                    },
+                }
+            }
+        },
+        {
+            "type": "line",
+            "name": "DIF",
+            "xAxisIndex": 2,
+            "yAxisIndex": 2,
+            "data": macd.dif,
+            "itemStyle": {
+                "normal": {
+                    "color": "#002aff",
+
+                },
+            }
+        },
+        {
+            "type": "line",
+            "name": "DEA",
+            "xAxisIndex": 2,
+            "yAxisIndex": 2,
+            "data": macd.dea,
+            "itemStyle": {
+                "normal": {
+                    "color": "#ccc",
+
+                },
+            }
+        },
+        {
+            "type": "line",
+            "xAxisIndex": 3,
+            "yAxisIndex": 3,
+            "areaStyle": {
+                "color": 'red',
+                "opacity": .2,
+            },
+        },
+        {
+            "type": "line",
+            "xAxisIndex": 3,
+            "yAxisIndex": 3,
+            "areaStyle": {
+                "color": 'red',
+                "opacity": .2,
+            },
+        }
+    ],
+    "legend": [{
+            "data": ifma(),
+            "show": true,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        },
+        {
+            "show": false,
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+
+    "grid": [{
+            "left": "0%",
+            "right": "8%",
+            "height": "60%",
+        },
+        {
+            "left": "0%",
+            "top": "68%",
+            "right": "8%",
+            "height": "14%",
+        },
+        {
+            "left": "0%",
+            "top": "82%",
+            "right": "8%",
+            "height": "15%",
+        },
+        {
+            "left": "92%",
+            "right": "0%",
+            "height": "60%",
+        }
+    ]
+}

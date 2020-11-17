@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="img">
+    <file>res/echarts4x.js</file>
+    <file>res/jquery.js</file>
+  </qresource>
+</RCC>
